@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { MementoPatternModule } from './memento_pattern/memento_pattern.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [MementoPatternModule],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
