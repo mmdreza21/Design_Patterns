@@ -1,74 +1,33 @@
 import { Injectable } from '@nestjs/common';
-
-//Originator
-class Editor {
-  private _content: string;
-
-  public get content(): string {
-    return this._content;
-  }
-
-  public set content(content: string) {
-    this._content = content;
-  }
-
-  private createState() {
-    const state = new EditorState(this.content);
-    const history = new History();
-    history.push(state);
-  }
-
-  private restore(state: EditorState | undefined) {
-    this.content = state ? state.content : '';
-  }
-
-  public undo() {
-    const history = new History();
-
-    this.restore(history.pop());
-  }
-}
-
-//Memento
-class EditorState {
-  private _content: string;
-
-  constructor(content: string) {
-    this._content = content;
-  }
-
-  public get content(): string {
-    return this._content;
-  }
-
-  public set content(content: string) {
-    this._content = content;
-  }
-}
-
-//CareTaker
-class History {
-  private states: Array<EditorState>; // javascript's arrays can work like Stacks
-
-  public push(state: EditorState) {
-    this.states.push(state);
-  }
-
-  pop() {
-    return this.states.pop();
-  }
-}
+import { Editor } from './Editor';
+import { History } from './History';
 
 @Injectable()
 export class MementoPatternService {
-  demo() {
+  public demo(): { content: string; fontName: string; fontSize: string } {
     const editor = new Editor();
+    const history = new History();
 
     editor.content = 'mmd';
+    editor.fontName = 'BNazanin';
+    editor.fontSize = '25';
+    history.push(editor.createState());
+
+    editor.fontName = 'console';
+    editor.fontSize = '10';
     editor.content = 'reza';
+    history.push(editor.createState());
+
     editor.content = 'ali';
-    editor.undo();
-    editor.undo();
-    return editor.content;
+    editor.fontName = 'tahoma';
+    editor.fontSize = '28';
+
+    editor.restore(history.pop()!);
+
+    return {
+      content: editor.content,
+      fontName: editor.fontName,
+      fontSize: editor.fontSize,
+    };
   }
 }
