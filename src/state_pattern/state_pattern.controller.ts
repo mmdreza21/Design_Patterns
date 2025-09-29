@@ -1,14 +1,19 @@
 import { Controller, Get } from '@nestjs/common';
-import { StatePatternService } from './state_pattern.service';
 import { ApiTags } from '@nestjs/swagger';
+import { StatePatternService } from './state_pattern.service';
 
 @ApiTags('02-State-pattern')
 @Controller('state-pattern')
 export class StatePatternController {
-  constructor(private readonly statePatternService: StatePatternService) {}
+  constructor(private readonly stateService: StatePatternService) {}
 
-  @Get('demo')
-  demo() {
-    return this.statePatternService.demo();
+  @Get('demo-a')
+  demoA() {
+    return this.stateService.demo(); // State A
+  }
+
+  @Get('demo-b')
+  demoB() {
+    return this.stateService.demoWithStateB(); // State B
   }
 }

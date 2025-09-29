@@ -1,14 +1,24 @@
 import { Injectable } from '@nestjs/common';
-import { Canvas } from './Canvas';
-import { ToolType } from './ToolType';
+import { Context } from './implementation/Context';
+import { ConcreteStateA } from './implementation/ConcreteStateA';
+import { ConcreteStateB } from './implementation/ConcreteStateB';
 
 @Injectable()
 export class StatePatternService {
+  constructor(
+    private readonly stateA: ConcreteStateA,
+    private readonly stateB: ConcreteStateB,
+  ) {}
+
   public demo() {
-    const canvas = new Canvas();
-    canvas.currentTool = ToolType.ERASER;
-    canvas.mouseDown();
-    canvas.mouseUp();
-    return 'state pattern test ';
+    const context = new Context();
+    context.state = this.stateA; // you can switch to stateB easily
+    return context.handle();
+  }
+
+  public demoWithStateB() {
+    const context = new Context();
+    context.state = this.stateB;
+    return context.handle();
   }
 }
