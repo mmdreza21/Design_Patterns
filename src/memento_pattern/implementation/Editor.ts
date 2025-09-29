@@ -1,5 +1,4 @@
 import { EditorState } from './EditorState';
-import { History } from './History';
 
 //Originator
 export class Editor {
