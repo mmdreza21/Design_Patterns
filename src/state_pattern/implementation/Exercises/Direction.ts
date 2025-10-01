@@ -1,14 +1,19 @@
 import { DirectionState } from './DirectionState';
 
 export class Direction {
-  private _state: DirectionState;
+  // private _state: DirectionState;
 
-  public get state(): DirectionState {
-    return this._state;
-  }
-  public set state(value: DirectionState) {
-    this._state = value;
-  }
+  // public get state(): DirectionState {
+  //   return this._state;
+  // }
+  // public set state(value: DirectionState) {
+  //   this._state = value;
+  // }
+  //! the Direction requires _state, but it’s not initialized in the constructor.
+
+  // If you try to call calculateETA before assigning state, it will throw.
+
+  constructor(private state: DirectionState) {}
 
   // Calculates estimated time of arrival between two points
   calculateETA(
@@ -23,6 +28,6 @@ export class Direction {
     start: { lat: number; lng: number },
     end: { lat: number; lng: number },
   ): string {
-    return this._state.getDirection(start, end);
+    return this.state.getDirection(start, end);
   }
 }

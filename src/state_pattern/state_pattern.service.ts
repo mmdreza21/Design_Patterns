@@ -26,8 +26,7 @@ export class StatePatternService {
   }
 
   public calcDirection() {
-    const direction = new Direction();
-    direction.state = this.driving;
+    const direction = new Direction(this.driving);
     const mockLocation = {
       start: { lat: 25, lng: 80 },
       end: { lat: 423123, lng: 231 },
@@ -36,8 +35,7 @@ export class StatePatternService {
   }
 
   public getDirection() {
-    const direction = new Direction();
-    direction.state = this.driving;
+    const direction = new Direction(this.driving);
     const mockLocation = {
       start: { lat: 25, lng: 80 },
       end: { lat: 323.123123, lng: 838121 },
