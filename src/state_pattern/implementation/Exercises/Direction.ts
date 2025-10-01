@@ -10,7 +10,6 @@ export class Direction {
   //   this._state = value;
   // }
   //! the Direction requires _state, but it’s not initialized in the constructor.
-
   // If you try to call calculateETA before assigning state, it will throw.
 
   constructor(private state: DirectionState) {}
