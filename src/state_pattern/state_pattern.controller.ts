@@ -16,4 +16,13 @@ export class StatePatternController {
   demoB() {
     return this.stateService.demoWithStateB(); // State B
   }
+  @Get('calcDirection')
+  calcDirection() {
+    return this.stateService.calcDirection();
+  }
+
+  @Get('getDirection')
+  getDirection() {
+    return this.stateService.getDirection();
+  }
 }
