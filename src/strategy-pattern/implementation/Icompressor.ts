@@ -1,1 +1,3 @@
-export interface ICompressor {}
+export interface ICompressor {
+  compress(): string;
+}

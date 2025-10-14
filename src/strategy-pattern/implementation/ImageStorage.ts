@@ -1,8 +1,11 @@
-export class ImageStorage {
-  constructor(
-    private compressor: string,
-    private filter: string,
-  ) {}
+import { Injectable } from '@nestjs/common';
+import { ICompressor } from './Icompressor';
 
-  public store(fileName: string) {}
+@Injectable()
+export class ImageStorage {
+  constructor() {}
+
+  public store(fileName: string, compressor: ICompressor) {
+    return compressor.compress();
+  }
 }
