@@ -1,8 +1,6 @@
-import { Injectable } from '@nestjs/common';
 import { Editor } from './implementation/Editor';
 import { History } from './implementation/History';
 
-@Injectable()
 export class MementoPatternService {
   public demo(): { content: string; fontName: string; fontSize: string } {
     const editor = new Editor();

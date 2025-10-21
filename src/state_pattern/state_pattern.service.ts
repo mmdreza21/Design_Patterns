@@ -1,11 +1,9 @@
-import { Injectable } from '@nestjs/common';
 import { Context } from './implementation/Context';
 import { ConcreteStateA } from './implementation/ConcreteStateA';
 import { ConcreteStateB } from './implementation/ConcreteStateB';
 import { Direction } from './implementation/Exercises/Direction';
 import { Driving } from './implementation/Exercises/Driving';
 
-@Injectable()
 export class StatePatternService {
   constructor(
     private readonly stateA: ConcreteStateA,

@@ -1,9 +1,6 @@
-import { Injectable } from '@nestjs/common';
 import { BrowseHistory } from './implementation/BrowseHistory';
 import { Iterator } from './implementation/Iterator';
-import { log } from 'console';
 
-@Injectable()
 export class IteratorPatternService {
   constructor(private readonly history: BrowseHistory) {}
 
