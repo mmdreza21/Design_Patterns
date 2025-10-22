@@ -1,8 +1,8 @@
-import { TemplatePattern } from "./src/template-pattern/template-pattern.service.ts";
+import { CommandPattern } from "./src/command-pattern/Commant-pattern.service.ts";
 
 class Main {
   constructor() {
-    TemplatePattern.test();
+    CommandPattern.test();
   }
 }
 
